@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import { Query } from 'react-apollo';
@@ -9,9 +9,11 @@ const GET_ALL_COUNTRIES = gql`
   {
     countries {
       name
+      native
       code
       emoji
       languages {
+        code
         name
       }
       continent {
@@ -27,24 +29,29 @@ const Countries = () => (
       if (loading) return <h1>Loading...</h1>;
       if (error) return <h2>404 - The API is down</h2>;
 
-      return data.countries.map(({ name, code, continent, languages }) => (
-        <div key={code}>
-          <p>Name: {name}</p>
-          <p>Continent: {continent.name}</p>
-          <p>Languages (In English):</p>
-          <ul>
-            {languages.map((language, index) => (
-              <li key={index}>{language.name}</li>
-            ))}
-          </ul>
-          {/* <ul>
-            {languages.map(language => (
-              <li>{language.name}</li>
-            ))}
-          </ul> */}
-          <hr />
-        </div>
-      ));
+      return data.countries.map(
+        ({ name, native, code, continent, languages }) => (
+          <div key={code}>
+            <p>Name (English): {name}</p>
+            <p>Name (Native): {native}</p>
+            <p>Continent: {continent.name}</p>
+            <p>Languages:</p>
+            <ul>
+              {languages.map((language, index) => (
+                <li key={index}>{language.name}</li>
+              ))}
+            </ul>
+
+            {/* {languages.map(
+            (language, index) =>
+              language.name !== 'English' && (
+                <p>Languages (In {language.name}):</p>
+              )
+          )} */}
+            <hr />
+          </div>
+        )
+      );
     }}
   </Query>
 );
