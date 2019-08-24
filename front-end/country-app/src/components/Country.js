@@ -8,7 +8,7 @@ const Country = ({ match }) => (
   <Query
     query={gql`
       {
-        country(code: "${match.params.code}") {
+        country(code: "${match.params.code.toUpperCase()}") {
           name
           native
           currency
