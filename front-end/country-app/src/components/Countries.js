@@ -1,9 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Countries = () => {
-  return <div>List of countries</div>;
-};
+import { Query } from 'react-apollo';
+import { gql } from 'apollo-boost';
+
+// Get all countries and associated languages
+const GET_ALL_COUNTRIES = gql`
+  {
+    countries {
+      name
+      code
+      emoji
+      languages {
+        name
+      }
+    }
+  }
+`;
+
+const Countries = () => (
+  <Query query={GET_ALL_COUNTRIES}>
+    {({ loading, error, data }) => {
+      if (loading) return <h1>Loading...</h1>;
+      if (error) return <h2>404 - The API is down</h2>;
+
+      return data.countries.map(({ name, code, languages }) => (
+        <div key={code}>
+          <p>Name: {name}</p>
+          {/* <p>Languages: {languages}</p> */}
+          {/* <p>Language: {languages}</p> */}
+          <hr />
+        </div>
+      ));
+    }}
+  </Query>
+);
 
 Countries.propTypes = {};
 
