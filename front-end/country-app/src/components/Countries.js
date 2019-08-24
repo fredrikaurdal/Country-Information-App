@@ -14,6 +14,9 @@ const GET_ALL_COUNTRIES = gql`
       languages {
         name
       }
+      continent {
+        name
+      }
     }
   }
 `;
@@ -24,11 +27,21 @@ const Countries = () => (
       if (loading) return <h1>Loading...</h1>;
       if (error) return <h2>404 - The API is down</h2>;
 
-      return data.countries.map(({ name, code, languages }) => (
+      return data.countries.map(({ name, code, continent, languages }) => (
         <div key={code}>
           <p>Name: {name}</p>
-          {/* <p>Languages: {languages}</p> */}
-          {/* <p>Language: {languages}</p> */}
+          <p>Continent: {continent.name}</p>
+          <p>Languages (In English):</p>
+          <ul>
+            {languages.map((language, index) => (
+              <li key={index}>{language.name}</li>
+            ))}
+          </ul>
+          {/* <ul>
+            {languages.map(language => (
+              <li>{language.name}</li>
+            ))}
+          </ul> */}
           <hr />
         </div>
       ));
