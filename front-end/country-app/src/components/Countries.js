@@ -1,5 +1,4 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 
 import { Query } from 'react-apollo';
 import { gql } from 'apollo-boost';
@@ -41,13 +40,6 @@ const Countries = () => (
                 <li key={index}>{language.name}</li>
               ))}
             </ul>
-
-            {/* {languages.map(
-            (language, index) =>
-              language.name !== 'English' && (
-                <p>Languages (In {language.name}):</p>
-              )
-          )} */}
             <hr />
           </div>
         )
@@ -55,7 +47,5 @@ const Countries = () => (
     }}
   </Query>
 );
-
-Countries.propTypes = {};
 
 export default Countries;

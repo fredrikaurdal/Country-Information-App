@@ -35,6 +35,8 @@ const Country = ({ match }) => (
   </Query>
 );
 
-Country.propTypes = {};
+Country.propTypes = {
+  mattch: PropTypes.string.isRequired
+};
 
 export default Country;
