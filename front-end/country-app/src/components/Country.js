@@ -36,7 +36,7 @@ const Country = ({ match }) => (
 );
 
 Country.propTypes = {
-  mattch: PropTypes.string.isRequired
+  match: PropTypes.string.isRequired
 };
 
 export default Country;

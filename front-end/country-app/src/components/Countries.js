@@ -1,7 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Query } from 'react-apollo';
 import { gql } from 'apollo-boost';
+
+import styled from 'styled-components';
+
+const Button = styled.button`
+  color: palevioletred;
+  background-color: white;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+`;
 
 // Get all countries and associated languages
 const GET_ALL_COUNTRIES = gql`
@@ -40,6 +53,14 @@ const Countries = () => (
                 <li key={index}>{language.name}</li>
               ))}
             </ul>
+            <Button>
+              <Link
+                to={`/countries/${code}`}
+                style={{ textDecoration: 'none' }}
+              >
+                {name} Page
+              </Link>
+            </Button>
             <hr />
           </div>
         )
