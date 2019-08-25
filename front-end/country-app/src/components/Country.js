@@ -27,7 +27,7 @@ const Country = ({ match }) => (
         <Fragment>
           <p>Name (English): {name}</p>
           <p>Name (Native): {native}</p>
-          <p>Currency: {currency}</p>
+          <p>Currency: {currency.replace(/,/g, ', ')}</p>
           <p>Phone Counry Code: +{phone}</p>
         </Fragment>
       );
