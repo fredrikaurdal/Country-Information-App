@@ -11,6 +11,8 @@ The application is built with HTML, CSS, JavaScript, React.js, Apollo and GraphQ
 -Currency
 -Area code (phone)
 
+![ezgif com-video-to-gif (1)](https://user-images.githubusercontent.com/35367024/66271652-3599e900-e869-11e9-9c41-022e9159feb8.gif)
+
 Run this project:
 
 ```
